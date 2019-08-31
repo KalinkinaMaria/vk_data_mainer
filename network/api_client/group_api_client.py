@@ -8,7 +8,7 @@ class Field(object):
 
 def get_group_data(group_id, additional=None):
     try:
-        return api.groups.getById(group_id=group_id, fields=additional, v=setting.VK_API_VERSION)
+        return api.groups.getById(group_id=group_id, fields=additional, v=setting.VK_API_VERSION)[0]
     except VkAPIError as e:
         return {'error': e.message}
     except Exception as e:
