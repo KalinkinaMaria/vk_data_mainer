@@ -4,9 +4,9 @@ def read():
     return Group.get()
 
 
-def read_by_id(id):
+def read_by_id(_id):
     try:
-        return Group.get(Group.id == id)
+        return Group.get(Group.id == _id)
     except Exception:
         return None
 
@@ -14,7 +14,7 @@ def read_by_id(id):
 def persist(*args):
     for item in args:
         if type(item) == Group:
-                item.save()
+                item.save(force_insert=True)
 
 def erase():
     items = read()
