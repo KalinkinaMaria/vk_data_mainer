@@ -1,3 +1,7 @@
+"""
+Dunning module for mining data about members count of groups from input files.
+"""
+
 import sys
 import time
 import argparse
@@ -9,6 +13,11 @@ import manager
 
 
 def create_parser():
+    """
+    Create parser for input args for this script
+
+    :return: parser
+    """
     parser = argparse.ArgumentParser(description='Clicker')
     parser.add_argument('--input', action='store', type=str, nargs=1)
 
@@ -16,6 +25,12 @@ def create_parser():
 
 
 def read_groups(file_path):
+    """
+    Create parser for input args for this script
+
+    :param file_path: path to file for read
+    :return: list of link of group
+    """
     result = []
     with open(file_path, 'r') as f:
         line = f.readline()
@@ -27,6 +42,9 @@ def read_groups(file_path):
 
 
 def start(input_file):
+    """
+    Main function
+    """
     group_links = read_groups(input_file)
 
     for group_link in group_links:

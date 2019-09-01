@@ -1,3 +1,7 @@
+"""
+Tests for transtation json to Group
+"""
+
 import pytest
 
 from database.model.group import Group

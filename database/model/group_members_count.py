@@ -1,3 +1,7 @@
+"""
+Module for database group members count model
+"""
+
 from peewee import IntegerField
 from peewee import DateTimeField
 from peewee import ForeignKeyField

@@ -1,3 +1,7 @@
+"""
+Tests for parse link to group name
+"""
+
 import pytest
 
 from manager import get_group_name_from_link

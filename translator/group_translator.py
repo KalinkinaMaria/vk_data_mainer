@@ -1,7 +1,17 @@
+"""
+Module for translator any object to Group
+"""
+
 from database.model.group import Group
 
 
 def create_from_json_with_link(json_group, link):
+    """
+    Translator json to Group
+    :param json_group: group as json
+    :param link: link of group
+    :return: group as Group
+    """
     if json_group is None or link is None: 
         return None
     

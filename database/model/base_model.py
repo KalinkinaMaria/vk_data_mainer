@@ -1,3 +1,7 @@
+"""
+Base module for database model
+"""
+
 import sys
 
 from peewee import SqliteDatabase

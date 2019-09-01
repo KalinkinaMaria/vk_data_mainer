@@ -1,3 +1,7 @@
+"""
+Module contains settings for this app
+"""
+
 from pathlib import Path
 
 #VK

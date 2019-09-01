@@ -1,3 +1,8 @@
+"""
+Module for organization work with interaction VK API results
+and writes it to database
+"""
+
 from datetime import datetime
 from urllib.parse import urlparse
 
@@ -8,8 +13,12 @@ from translator import group_translator as gt
 from translator import group_members_count_translator as gmct
 
 
-# TODO: - Add tests.
 def get_group_name_from_link(link):
+    """
+    Parse link of VK group to group name
+    :param link: link of group
+    :return: name of group
+    """
     scheme = ['https://', 'http://']
     parsered_link = urlparse(link if any([link.startswith(i) for i in scheme]) else scheme[0] + link)
     path = parsered_link.path
@@ -22,8 +31,12 @@ def get_group_name_from_link(link):
     return path if not '/' in path else ''
 
 
-# TODO: - Replace return value to throw exception.
 def group_mining(group_link):
+    """
+    Maining data of members count of group
+    :param group_link: link of group
+    :raise: error with parse link and error from api
+    """
     group_name = get_group_name_from_link(group_link)
     if len(group_name) == 0:
         raise Exception(f"faild with parse link of group: {group_link}")
@@ -42,5 +55,3 @@ def group_mining(group_link):
     
     db_group_member_count = gmct.create_from_json_with_datetime(group_info, datetime.now())
     group_members_count_dao.persist(db_group_member_count)
-
-    return True

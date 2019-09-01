@@ -1,3 +1,7 @@
+"""
+Tests for transtation json to GroupMembersCount
+"""
+
 import datetime
 
 import pytest

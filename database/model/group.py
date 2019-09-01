@@ -1,3 +1,7 @@
+"""
+Module for database group model
+"""
+
 from peewee import CharField
 from peewee import IntegerField
 from peewee import DateField
