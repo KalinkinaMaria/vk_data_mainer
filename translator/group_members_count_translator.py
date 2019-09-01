@@ -1,8 +1,7 @@
-from datetime import datetime
-
 from database.model.group_members_count import GroupMembersCount
 
-def create_from_json(json_group):
+
+def create_from_json_with_datetime(json_group, datetime):
     if json_group is None:
         return None
     
@@ -13,7 +12,7 @@ def create_from_json(json_group):
     
     groupMembersCount = GroupMembersCount()
     groupMembersCount.count = json_group['members_count']
-    groupMembersCount.date = datetime.now()
+    groupMembersCount.date = datetime 
     groupMembersCount.group_id = json_group['id']
 
     return groupMembersCount
