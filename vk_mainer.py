@@ -1,5 +1,9 @@
 import sys
+import time
 import argparse
+from datetime import datetime
+
+import schedule
 
 import manager
 
@@ -22,6 +26,14 @@ def read_groups(file_path):
     return result
 
 
+def start(input_file):
+    group_links = read_groups(input_file)
+
+    for group_link in group_links:
+        if not manager.group_mining(group_link):
+            print(f"error with {group_link} link")
+
+
 if __name__ == '__main__':
     arg_parser = create_parser()
     option = arg_parser.parse_args(sys.argv[1:])
@@ -32,8 +44,12 @@ if __name__ == '__main__':
         arg_parser.print_help()
         exit(1)
     
-    group_links = read_groups(input_file)
+    now = datetime.now()
+    now_hour = now.hour
+    now_minute = now.minute
+    
+    schedule.every().day.at(f"{now_hour}:{now_minute + 2}").do(start, input_file=input_file)
 
-    for group_link in group_links:
-        if not manager.group_mining(group_link):
-            print(f"error with {group_link} link")
+    while True:
+        schedule.run_pending()
+        time.sleep(60)
