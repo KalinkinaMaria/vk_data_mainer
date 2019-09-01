@@ -2,7 +2,7 @@ from database.model.group_members_count import GroupMembersCount
 
 
 def create_from_json_with_datetime(json_group, datetime):
-    if json_group is None:
+    if json_group is None or datetime is None:
         return None
     
     requeired_fields = ['id', 'members_count']
