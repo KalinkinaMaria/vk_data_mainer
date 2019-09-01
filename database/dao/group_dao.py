@@ -1,5 +1,6 @@
 from database.model.group import Group
 
+
 def read():
     return Group.get()
 
@@ -15,6 +16,7 @@ def persist(*args):
     for item in args:
         if type(item) == Group:
                 item.save(force_insert=True)
+
 
 def erase():
     items = read()
